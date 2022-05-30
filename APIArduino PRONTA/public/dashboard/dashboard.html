@@ -104,13 +104,13 @@
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function obterDadosGrafico(idMedidas) {
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
 
         fetch(`/medidas/ultimas/${idMedidas}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
-                response.json().then(function (resposta) {
+                response.json().then(function (resposta){
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
@@ -187,10 +187,10 @@
             dados.labels.push(registro.momento_grafico);
             dados.datasets[0].data.push(registro.quantidade*10);
             dados.datasets[1].data.push(registro.corredor1*30);
-            dados.datasets[2].data.push(registro.corredor1*65);
-            dados.datasets[3].data.push(registro.corredor1*99);
-            dados.datasets[4].data.push(registro.corredor1*141);
-            dados.datasets[5].data.push(registro.corredor1*220);
+            dados.datasets[2].data.push(registro.corredor2*65);
+            dados.datasets[3].data.push(registro.corredor3*99);
+            dados.datasets[4].data.push(registro.corredor4*141);
+            dados.datasets[5].data.push(registro.corredor5*220);
         }
 
         console.log(JSON.stringify(dados));
@@ -260,22 +260,22 @@
                     dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
                     
                     dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                    dados.datasets[0].data.push(novoRegistro[0].quantidade * 10); // incluir uma nova medida de umidade
                     
                     dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                    dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                    dados.datasets[1].data.push(novoRegistro[0].corredor1 * 30); // incluir uma nova medida de temperatura
 
                     dados.datasets[2].data.shift();  // apagar o primeiro de temperatura
-                    dados.datasets[2].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                    dados.datasets[2].data.push(novoRegistro[0].corredor2 * 65); // incluir uma nova medida de temperatura
                     
                     dados.datasets[3].data.shift();  // apagar o primeiro de temperatura
-                    dados.datasets[3].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                    dados.datasets[3].data.push(novoRegistro[0].corredor3 * 99); // incluir uma nova medida de temperatura
 
                     dados.datasets[4].data.shift();  // apagar o primeiro de temperatura
-                    dados.datasets[4].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                    dados.datasets[4].data.push(novoRegistro[0].corredor4 * 141); // incluir uma nova medida de temperatura
 
                     dados.datasets[5].data.shift();  // apagar o primeiro de temperatura
-                    dados.datasets[5].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                    dados.datasets[5].data.push(novoRegistro[0].corredor5 * 220); // incluir uma nova medida de temperatura
                     window.grafico_linha.update();
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
