@@ -205,22 +205,24 @@ margin-right: 500px;
 margin-left: -67px;
 }
 .dash {
+  position: relative;
   width: 65%;
-  margin-top: 120px;
+  margin-top: 90px;
   position: relative;
   top: 0;
   left: 40%;
   background-color: #ffffff;
-
   /* width: 75%;
     display: flex;
     background-color: #161618;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;*/
-  height: 55vh;
 }
-
+#canvas_grafico{
+margin-left: -200px;
+margin-top: -70px;
+}
 .regua {
   display: flex;
   flex-wrap: wrap;
@@ -311,10 +313,12 @@ margin-left: -67px;
 }
 
 .btns-dash {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin-top: 100px;
+  margin-top: 140px;
 margin-left: -450px;
 }
 
